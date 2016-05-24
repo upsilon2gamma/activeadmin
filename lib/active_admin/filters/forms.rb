@@ -54,7 +54,22 @@ module ActiveAdmin
                      as: :q }
         options  = defaults.deep_merge(options).deep_merge(required)
 
-        form_for search, options do |f|
+        buffer = ''
+        ActiveAdminFilter.where(collection: params[:controller]).find_each do |filter|
+          link = link_to(filter.name, collection_path(q: filter.params, saved_filter: filter.id))
+          remove = link_to('x', '#', class: 'delete', data: { name: filter.name, url: "#{collection_path}/delete_filter" })
+          opts = {}
+          if params[:saved_filter] && filter.id == params[:saved_filter].to_i
+            opts.update(class: 'current_filter')
+          end
+          buffer += content_tag(:li, link + ' ' + remove, opts)
+        end
+        unless buffer.empty?
+          buffer = content_tag(:label, I18n.t('active_admin.sidebars.saved_filters'), class: 'label') +
+                   content_tag(:ul, buffer.html_safe, class: 'saved_filters')
+        end
+
+        buffer += form_for search, options do |f|
           filters.each do |attribute, opts|
             next if opts.key?(:if)     && !call_method_or_proc_on(self, opts[:if])
             next if opts.key?(:unless) &&  call_method_or_proc_on(self, opts[:unless])
@@ -64,12 +79,15 @@ module ActiveAdmin
 
           buttons = content_tag :div, class: "buttons" do
             f.submit(I18n.t('active_admin.filters.buttons.filter')) +
+              link_to(I18n.t('active_admin.filters.buttons.save'), '#', class: 'save_filters_btn', data: { url: "#{collection_path}/create_filter" }) +
               link_to(I18n.t('active_admin.filters.buttons.clear'), '#', class: 'clear_filters_btn') +
               hidden_field_tags_for(params, except: except_hidden_fields)
           end
 
           f.template.concat buttons
         end
+
+        buffer.html_safe
       end
 
       private

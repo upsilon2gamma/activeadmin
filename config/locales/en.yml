@@ -24,6 +24,7 @@ en:
       buttons:
         filter: "Filter"
         clear: "Clear Filters"
+        save: "Filter And Save Filters"
       predicates:
         contains: "Contains"
         equals: "Equals"
@@ -44,6 +45,7 @@ en:
     sidebars:
       filters: "Filters"
       search_status: "Search Status"
+      saved_filters: "Saved Filters"
     pagination:
       empty: "No %{model} found"
       one: "Displaying <b>1</b> %{model}"

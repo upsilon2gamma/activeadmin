@@ -271,6 +271,26 @@ $sidebar-inner-content-width: $sidebar-width - ($section-padding * 2);
     width: $sidebar-inner-content-width - ($text-input-horizontal-padding * 2);
   }
 
+  ul.saved_filters {
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+      &.current_filter a {
+        font-weight: bold;
+      }
+
+      a.delete {
+        color: red;
+        text-decoration: none;
+        visibility: hidden;
+      }
+
+      &:hover a.delete {
+        visibility: visible;
+      }
+    }
+  }
 }
 
 // -------------------------------------- Filter Forms
@@ -329,5 +349,6 @@ form.filter_form {
     }
   }
   a.clear_filters_btn { @include light-button; }
+  a.save_filters_btn { @include dark-button; }
 }
 

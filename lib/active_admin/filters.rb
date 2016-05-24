@@ -7,3 +7,8 @@ require 'active_admin/filters/forms'
 ActiveAdmin::ResourceDSL.send :include, ActiveAdmin::Filters::DSL
 ActiveAdmin::Resource.send    :include, ActiveAdmin::Filters::ResourceExtension
 ActiveAdmin::ViewHelpers.send :include, ActiveAdmin::Filters::ViewHelper
+
+ActiveAdmin.before_load do |app|
+  require "active_admin/filters/controller"
+  ActiveAdmin::ResourceController.send :include, ActiveAdmin::Filters::Controller
+end

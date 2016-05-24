@@ -23,7 +23,8 @@
     filters:
       buttons:
         filter: "过滤"
-        clear: "清除条件"
+        clear: "清除"
+        save: "过滤并保存"
       predicates:
         contains: "包含"
         equals: "等于"
@@ -44,6 +45,7 @@
     sidebars:
       filters: "所有条件"
       search_status: "搜索条件"
+      saved_filters: "保存的条件"
     pagination:
       empty: "暂时没有%{model}"
       one: "显示 <b>1</b> %{model}"
