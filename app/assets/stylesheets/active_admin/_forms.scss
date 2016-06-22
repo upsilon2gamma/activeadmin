@@ -276,18 +276,28 @@ $sidebar-inner-content-width: $sidebar-width - ($section-padding * 2);
     padding-left: 0;
 
     li {
+      a {
+        &:link, &:visited {
+          text-decoration: none;
+        }
+      }
       &.current_filter a {
         font-weight: bold;
+        text-decoration: underline;
       }
 
       a.delete {
-        color: red;
-        text-decoration: none;
-        visibility: hidden;
+        padding-right: 18px;
+        background: image-url('active_admin/close.png') no-repeat;
+        background-size: 11px;
+        background-position: -18px 1px;
+        opacity: 0;
+        transition: all 0.5s;
       }
 
       &:hover a.delete {
-        visibility: visible;
+        opacity: 1;
+        background-position: right 1px;
       }
     }
   }

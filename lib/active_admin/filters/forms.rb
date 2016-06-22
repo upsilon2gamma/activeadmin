@@ -57,7 +57,7 @@ module ActiveAdmin
         buffer = ''
         ActiveAdminFilter.where(collection: params[:controller]).find_each do |filter|
           link = link_to(filter.name, collection_path(q: filter.params, saved_filter: filter.id))
-          remove = link_to('x', '#', class: 'delete', data: { name: filter.name, url: "#{collection_path}/delete_filter" })
+          remove = link_to('', '#', class: 'delete', data: { name: filter.name, url: "#{collection_path}/delete_filter" })
           opts = {}
           if params[:saved_filter] && filter.id == params[:saved_filter].to_i
             opts.update(class: 'current_filter')

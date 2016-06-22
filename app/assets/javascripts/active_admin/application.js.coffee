@@ -40,7 +40,7 @@ $(document).on 'ready page:load', ->
       method: 'POST'
       data: { name: $(@).data('name') }
       success: =>
-        $(@).parents('li').remove()
+        $(@).parents('li').slideUp(300, -> $(@).remove())
     false
 
   # Filter form: don't send any inputs that are empty
