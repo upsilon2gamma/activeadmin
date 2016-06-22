@@ -143,7 +143,14 @@ module ActiveAdmin
       end
 
       def add_filters_sidebar_section
+        self.sidebar_sections << saved_filters_sidebar_section
         self.sidebar_sections << filters_sidebar_section
+      end
+
+      def saved_filters_sidebar_section
+        ActiveAdmin::SidebarSection.new :saved_filters, only: :index, if: ->{ ActiveAdminFilter.exists?(collection: params[:controller]) } do
+          active_admin_saved_filters
+        end
       end
 
       def filters_sidebar_section

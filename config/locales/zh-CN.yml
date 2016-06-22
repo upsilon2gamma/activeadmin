@@ -45,7 +45,7 @@
     sidebars:
       filters: "所有条件"
       search_status: "搜索条件"
-      saved_filters: "保存的条件"
+      saved_filters: "保存的过滤器"
     pagination:
       empty: "暂时没有%{model}"
       one: "显示 <b>1</b> %{model}"
