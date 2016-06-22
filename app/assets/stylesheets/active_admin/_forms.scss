@@ -289,8 +289,8 @@ $sidebar-inner-content-width: $sidebar-width - ($section-padding * 2);
       a.delete {
         padding-right: 18px;
         background: image-url('active_admin/close.png') no-repeat;
-        background-size: 11px;
-        background-position: -18px 1px;
+        background-size: 10px;
+        background-position: -18px 2px;
         opacity: 0;
         transition: all 0.5s;
       }
